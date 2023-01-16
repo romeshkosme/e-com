@@ -1,14 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getProducts } from "../api/productApi";
 
-export const EComContext = createContext();
+const EComContext = createContext();
+const EComUpdateContext = createContext();
 
-export function useEcomContext () {
-  return useContext(EComContext)
+export function useEcomContext() {
+	return useContext(EComContext);
 }
 
-export function EComProvider({ childer }) {
-	const [products, setProducts] = useState([]);
+export function EComProvider({ children }) {
+	const [products, setProducts] = useState();
 
 	const fetchProducts = async () => {
 		const res = await getProducts();
@@ -19,9 +20,13 @@ export function EComProvider({ childer }) {
 
 	useEffect(() => {
 		fetchProducts();
-	}, [])
+	}, []);
 
 	return (
-		<EComContext.Provider value={products}>{childer}</EComContext.Provider>
+		<EComContext.Provider value={products}>
+			<EComUpdateContext.Provider value={setProducts}>
+				{children}
+			</EComUpdateContext.Provider>
+		</EComContext.Provider>
 	);
 }

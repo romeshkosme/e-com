@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import useCart from "../hooks/useCart";
+import React from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { EComContext, CartContext, CartUpdateContext } from "../App";
+import { useEcomContext } from "../context/EcomContext";
+import { useCartContext, useCartUpdateContext } from "../context/CartContext";
 
 function Products() {
-	const cart = useContext(CartContext);
-	const setCart = useContext(CartUpdateContext);
-	const products = useContext(EComContext);
+	const cart = useCartContext();
+	const setCart = useCartUpdateContext();
+	const products = useEcomContext();
 	const addToCart = (productId) => {
 		// find if item already added
 		const found = cart.find((item) => item.id === productId);

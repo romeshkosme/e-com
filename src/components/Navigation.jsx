@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { CartContext } from "../App";
+import React from "react";
+import { useCartContext } from "../context/CartContext";
 
 function Navigation() {
-	const cart = useContext(CartContext);
+	const cart = useCartContext();
 	const count = cart.reduce((acc, curr) => {
 		acc += curr.quantity;
 		return acc;
@@ -21,8 +21,8 @@ function Navigation() {
 						Categories
 					</li>
 					<li className='float-right px-4 py-2 cursor-pointer bg-gray-100 hover:bg-gray-300'>
-						<span className="">
-							<span className="inline-block">Cart</span>
+						<span className=''>
+							<span className='inline-block'>Cart</span>
 							<span className='inline-block ml-1 w-5 text-center text-xs text-white bg-red-600 rounded-full'>
 								{count}
 							</span>
