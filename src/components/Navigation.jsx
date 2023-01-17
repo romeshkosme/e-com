@@ -1,5 +1,6 @@
 import React from "react";
 import { useCartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 function Navigation() {
 	const cart = useCartContext();
@@ -12,7 +13,9 @@ function Navigation() {
 			<nav className='bg-gray-100'>
 				<ul className='max-w-screen-xl mx-auto'>
 					<li className='inline-block px-4 py-2 cursor-pointer bg-gray-100 hover:bg-gray-300'>
+					<Link to={`/`}>
 						Home
+						</Link>
 					</li>
 					<li className='inline-block px-4 py-2 cursor-pointer bg-gray-100 hover:bg-gray-300'>
 						Products
@@ -21,12 +24,14 @@ function Navigation() {
 						Categories
 					</li>
 					<li className='float-right px-4 py-2 cursor-pointer bg-gray-100 hover:bg-gray-300'>
-						<span className=''>
-							<span className='inline-block'>Cart</span>
-							<span className='inline-block ml-1 w-5 text-center text-xs text-white bg-red-600 rounded-full'>
-								{count}
+						<Link to={`cart`}>
+							<span className=''>
+								<span className='inline-block'>Cart</span>
+								<span className='inline-block ml-1 w-5 text-center text-xs text-white bg-red-600 rounded-full'>
+									{count}
+								</span>
 							</span>
-						</span>
+						</Link>
 					</li>
 				</ul>
 			</nav>

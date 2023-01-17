@@ -1,24 +1,22 @@
-import Home from "./page/Home";
-import Navigation from "./components/Navigation";
+import Home from "./pages/Home";
 import { EComProvider } from "./context/EcomContext";
 import { CartProvider } from "./context/CartContext";
-
-// export const CartContext = createContext();
-// export const CartUpdateContext = createContext();
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Cart from "./pages/Cart"
 
 function App() {
-	// const [cart, setCart] = useCart([]);
 	return (
 		<EComProvider>
 			<CartProvider>
-				{/* <CartContext.Provider value={cart}>
-				<CartUpdateContext.Provider value={setCart}> */}
-				<div className='App'>
-					<Navigation />
-					<Home />
-				</div>
-				{/* </CartUpdateContext.Provider>
-			</CartContext.Provider> */}
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<Layout />}>
+							<Route index element={<Home />} />
+							<Route path="cart" element={<Cart />} />
+						</Route>
+					</Routes>
+				</BrowserRouter>
 			</CartProvider>
 		</EComProvider>
 	);
