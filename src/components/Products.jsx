@@ -7,8 +7,8 @@ function Products() {
 	const products = useEcomContext();
 	return (
 		<>
-			<Profiler id='products' onRender={profiler}>
-				<div className='grid grid-cols-4 gap-4 my-10'>
+			{/* <Profiler id='products' onRender={profiler}> */}
+				<div className='grid grid-cols-4 gap-5 my-10'>
 					{products?.map((product) => (
 						<ProductCard
 							key={product.id}
@@ -19,7 +19,7 @@ function Products() {
 						/>
 					))}
 				</div>
-			</Profiler>
+			{/* </Profiler> */}
 		</>
 	);
 }

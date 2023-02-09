@@ -13,6 +13,7 @@ export function useCartUpdateContext() {
 
 export function CartProvider({ children }) {
 	const [cart, setCart] = useCart([]);
+	
 	return (
 		<CartContext.Provider value={cart}>
 			<CartUpdateContext.Provider value={setCart}>

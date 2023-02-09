@@ -5,10 +5,12 @@ import Navigation from "./Navigation";
 function Layout() {
 	return (
 		<>
-			<Navigation />
-			<Suspense>
-				<Outlet />
-			</Suspense>
+			<div className='bg-custom-bg-light'>
+				<Navigation />
+				<Suspense>
+					<Outlet />
+				</Suspense>
+			</div>
 		</>
 	);
 }

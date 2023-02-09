@@ -26,12 +26,13 @@ export const removeFromCart = (productId, cart) => {
 	const found = cart.find((item) => item.id === productId);
 	// if added increase quantity by one
 	if (found) {
-		const response = cart.map((elem) => {
+		let response = cart.map((elem) => {
 			if (elem.id === productId) {
 				elem.quantity = elem.quantity - 1;
 			}
 			return elem;
 		});
+		response = response.filter((elem) => elem.quantity != 0)
 		return response;
 	}
 };

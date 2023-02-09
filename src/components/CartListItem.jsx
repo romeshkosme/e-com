@@ -3,7 +3,7 @@ import productDefaultImg from "../assets/default.jpg";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useCartContext, useCartUpdateContext } from "../context/CartContext";
 
-function CartListItem({id, title, price, quantity}) {
+function CartListItem({id, title, price, quantity, thumbnail}) {
   const cart = useCartContext();
   const setCart = useCartUpdateContext();
   const handleCartAction = (productId, action) => {
@@ -25,7 +25,7 @@ function CartListItem({id, title, price, quantity}) {
 			<div key={id} className='flex gap-4 my-2'>
 				{/* product image */}
 				<div className='flex-none w-28'>
-					<img src={productDefaultImg} alt='Product image' className='w-28' />
+					<img src={thumbnail} alt='Product image' className='max-h-24' />
 				</div>
 				{/* product detail */}
 				<div className='flex-1 flex justify-between'>
